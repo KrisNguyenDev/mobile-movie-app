@@ -1,7 +1,6 @@
-import { icons } from "@/constants/icons";
-import { images } from "@/constants/images";
+import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import { Image, ImageBackground, Text } from "react-native";
+import { Image, Text, View } from "react-native";
 
 const TabIcon = ({
   tabName,
@@ -13,56 +12,74 @@ const TabIcon = ({
   focused: boolean;
 }) => {
   return (
-    <ImageBackground
-      className="flex flex-row w-full min-w-[112px] justify-center items-center h-full rounded-full"
-      source={focused ? images.highlight : null}
-    >
+    <View className="flex flex-row w-full justify-center items-center h-full">
       <Image source={icon} tintColor="#151312" className="size-5" />
       <Text className="text-base font-semibold">{tabName}</Text>
-    </ImageBackground>
+    </View>
   );
 };
 
 const _layout = () => {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarStyle: {},
+        tabBarItemStyle: {},
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: "",
+          title: "Home",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon tabName="Home" focused={focused} icon={icons.home} />
+            <Ionicons
+              name="home-outline"
+              size={24}
+              color={focused ? "blue" : ""}
+            />
           ),
         }}
       />
       <Tabs.Screen
         name="search"
         options={{
-          title: "",
+          title: "Search",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon tabName="Search" focused={focused} icon={icons.search} />
+            <Ionicons
+              name="search-outline"
+              size={24}
+              color={focused ? "blue" : ""}
+            />
           ),
         }}
       />
       <Tabs.Screen
         name="saved"
         options={{
-          title: "",
+          title: "Saved",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon tabName="Saved" focused={focused} icon={icons.save} />
+            <Ionicons
+              name="bookmark-outline"
+              size={24}
+              color={focused ? "blue" : ""}
+            />
           ),
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: "",
+          title: "Profile",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon tabName="Profile" focused={focused} icon={icons.person} />
+            <Ionicons
+              name="person-outline"
+              size={24}
+              color={focused ? "blue" : ""}
+            />
           ),
         }}
       />
